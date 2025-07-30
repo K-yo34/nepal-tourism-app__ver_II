@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.chart.PieChart?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.nepaltourism.controller.DashboardController">
+   <top>
+      <HBox alignment="CENTER_LEFT" spacing="10.0" style="-fx-background-color: #2c3e50; -fx-padding: 15;">
+         <children>
+            <Label fx:id="welcomeLabel" style="-fx-text-fill: white; -fx-font-size: 18px; -fx-font-weight: bold;" text="Welcome, Admin" />
+            <Region HBox.hgrow="ALWAYS" />
+            <Label style="-fx-text-fill: white;" text="Language:" />
+            <ComboBox fx:id="languageComboBox" />
+            <Button fx:id="logoutButton" onAction="#logout" style="-fx-background-color: #e74c3c; -fx-text-fill: white; -fx-font-weight: bold;" text="Logout" />
+         </children>
+         <padding>
+            <Insets bottom="10.0" left="20.0" right="20.0" top="10.0" />
+         </padding>
+      </HBox>
+   </top>
+   <left>
+      <VBox spacing="5.0" style="-fx-background-color: #34495e; -fx-padding: 20;">
+         <children>
+            <Button fx:id="touristsButton" maxWidth="1.7976931348623157E308" onAction="#openTourists" style="-fx-background-color: #3498db; -fx-text-fill: white; -fx-font-weight: bold; -fx-padding: 10;" text="Tourists" />
+            <Button fx:id="guidesButton" maxWidth="1.7976931348623157E308" onAction="#openGuides" style="-fx-background-color: #3498db; -fx-text-fill: white; -fx-font-weight: bold; -fx-padding: 10;" text="Guides" />
+            <Button fx:id="attractionsButton" maxWidth="1.7976931348623157E308" onAction="#openAttractions" style="-fx-background-color: #3498db; -fx-text-fill: white; -fx-font-weight: bold; -fx-padding: 10;" text="Attractions" />
+            <Button fx:id="bookingsButton" maxWidth="1.7976931348623157E308" onAction="#openBookings" style="-fx-background-color: #3498db; -fx-text-fill: white; -fx-font-weight: bold; -fx-padding: 10;" text="Bookings" />
+            <Button fx:id="festivalsButton" maxWidth="1.7976931348623157E308" onAction="#openFestivals" style="-fx-background-color: #3498db; -fx-text-fill: white; -fx-font-weight: bold; -fx-padding: 10;" text="Festivals" />
+            <Button fx:id="reportsButton" maxWidth="1.7976931348623157E308" onAction="#openReports" style="-fx-background-color: #3498db; -fx-text-fill: white; -fx-font-weight: bold; -fx-padding: 10;" text="Reports" />
+            <Button fx:id="safetyButton" maxWidth="1.7976931348623157E308" onAction="#openSafety" style="-fx-background-color: #e67e22; -fx-text-fill: white; -fx-font-weight: bold; -fx-padding: 10;" text="Safety" />
+         </children>
+         <padding>
+            <Insets bottom="20.0" left="10.0" right="10.0" top="20.0" />
+         </padding>
+      </VBox>
+   </left>
+   <center>
+      <ScrollPane fitToWidth="true">
+         <content>
+            <VBox spacing="20.0">
+               <children>
+                  <GridPane hgap="20.0" vgap="20.0">
+                     <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                     </columnConstraints>
+                     <rowConstraints>
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                     </rowConstraints>
+                     <children>
+                        <VBox alignment="CENTER" style="-fx-background-color: #3498db; -fx-background-radius: 10; -fx-padding: 20;">
+                           <children>
+                              <Label fx:id="totalTouristsLabel" style="-fx-text-fill: white; -fx-font-size: 24px; -fx-font-weight: bold;" text="0" />
+                              <Label style="-fx-text-fill: white; -fx-font-size: 14px;" text="Total Tourists" />
+                           </children>
+                        </VBox>
+                        <VBox alignment="CENTER" style="-fx-background-color: #2ecc71; -fx-background-radius: 10; -fx-padding: 20;" GridPane.columnIndex="1">
+                           <children>
+                              <Label fx:id="totalGuidesLabel" style="-fx-text-fill: white; -fx-font-size: 24px; -fx-font-weight: bold;" text="0" />
+                              <Label style="-fx-text-fill: white; -fx-font-size: 14px;" text="Total Guides" />
+                           </children>
+                        </VBox>
+                        <VBox alignment="CENTER" style="-fx-background-color: #e74c3c; -fx-background-radius: 10; -fx-padding: 20;" GridPane.columnIndex="2">
+                           <children>
+                              <Label fx:id="totalBookingsLabel" style="-fx-text-fill: white; -fx-font-size: 24px; -fx-font-weight: bold;" text="0" />
+                              <Label style="-fx-text-fill: white; -fx-font-size: 14px;" text="Total Bookings" />
+                           </children>
+                        </VBox>
+                        <VBox alignment="CENTER" style="-fx-background-color: #f39c12; -fx-background-radius: 10; -fx-padding: 20;" GridPane.columnIndex="3">
+                           <children>
+                              <Label fx:id="totalAttractionsLabel" style="-fx-text-fill: white; -fx-font-size: 24px; -fx-font-weight: bold;" text="3" />
+                              <Label style="-fx-text-fill: white; -fx-font-size: 14px;" text="Total Attractions" />
+                           </children>
+                        </VBox>
+                     </children>
+                  </GridPane>
+                  <HBox spacing="20.0">
+                     <children>
+                        <VBox spacing="10.0" HBox.hgrow="ALWAYS">
+                           <children>
+                              <Label style="-fx-font-size: 16px; -fx-font-weight: bold;" text="Tourist Nationality Distribution" />
+                              <PieChart fx:id="nationalityChart" prefHeight="300.0" />
+                           </children>
+                        </VBox>
+                        <VBox spacing="10.0" HBox.hgrow="ALWAYS">
+                           <children>
+                              <Label style="-fx-font-size: 16px; -fx-font-weight: bold;" text="Recent Bookings" />
+                              <ListView fx:id="recentBookingsListView" prefHeight="300.0" />
+                           </children>
+                        </VBox>
+                     </children>
+                  </HBox>
+                  <VBox spacing="10.0">
+                     <children>
+                        <Label style="-fx-font-size: 16px; -fx-font-weight: bold;" text="Active Festivals" />
+                        <ListView fx:id="activeFestivalsListView" prefHeight="150.0" />
+                     </children>
+                  </VBox>
+               </children>
+               <padding>
+                  <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+               </padding>
+            </VBox>
+         </content>
+      </ScrollPane>
+   </center>
+</BorderPane>

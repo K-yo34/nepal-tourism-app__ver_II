@@ -1,0 +1,349 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.chart.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.nepaltourism.controller.ReportController">
+   <top>
+      <HBox alignment="CENTER_LEFT" spacing="20.0" styleClass="header">
+         <children>
+            <Label styleClass="page-title" text="Reports &amp; Analytics">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+            <Region HBox.hgrow="ALWAYS" />
+            <Button onAction="#refreshReports" styleClass="primary-button" text="Refresh Reports" />
+         </children>
+         <padding>
+            <Insets bottom="15.0" left="20.0" right="20.0" top="15.0" />
+         </padding>
+      </HBox>
+   </top>
+   <center>
+      <TabPane fx:id="reportsTabPane" tabClosingPolicy="UNAVAILABLE">
+         <tabs>
+            <Tab text="Overview">
+               <content>
+                  <ScrollPane fitToWidth="true">
+                     <content>
+                        <VBox spacing="20.0">
+                           <children>
+                              <GridPane hgap="20.0" vgap="20.0">
+                                 <columnConstraints>
+                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                 </columnConstraints>
+                                 <rowConstraints>
+                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                 </rowConstraints>
+                                 <children>
+                                    <VBox alignment="CENTER" styleClass="stat-card">
+                                       <children>
+                                          <Label fx:id="totalRevenueLabel" styleClass="stat-number" text="NPR 0.00">
+                                             <font>
+                                                <Font name="System Bold" size="20.0" />
+                                             </font>
+                                          </Label>
+                                          <Label text="Total Revenue" />
+                                       </children>
+                                       <padding>
+                                          <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+                                       </padding>
+                                    </VBox>
+                                    <VBox alignment="CENTER" styleClass="stat-card" GridPane.columnIndex="1">
+                                       <children>
+                                          <Label fx:id="totalBookingsLabel" styleClass="stat-number" text="0">
+                                             <font>
+                                                <Font name="System Bold" size="20.0" />
+                                             </font>
+                                          </Label>
+                                          <Label text="Completed Bookings" />
+                                       </children>
+                                       <padding>
+                                          <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+                                       </padding>
+                                    </VBox>
+                                    <VBox alignment="CENTER" styleClass="stat-card" GridPane.columnIndex="2">
+                                       <children>
+                                          <Label fx:id="averageBookingValueLabel" styleClass="stat-number" text="NPR 0.00">
+                                             <font>
+                                                <Font name="System Bold" size="20.0" />
+                                             </font>
+                                          </Label>
+                                          <Label text="Average Booking Value" />
+                                       </children>
+                                       <padding>
+                                          <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+                                       </padding>
+                                    </VBox>
+                                    <VBox alignment="CENTER" styleClass="stat-card" GridPane.columnIndex="3">
+                                       <children>
+                                          <Label fx:id="activeFestivalsLabel" styleClass="stat-number" text="0">
+                                             <font>
+                                                <Font name="System Bold" size="20.0" />
+                                             </font>
+                                          </Label>
+                                          <Label text="Active Festivals" />
+                                       </children>
+                                       <padding>
+                                          <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+                                       </padding>
+                                    </VBox>
+                                 </children>
+                              </GridPane>
+                              <HBox spacing="20.0">
+                                 <children>
+                                    <VBox spacing="10.0" HBox.hgrow="ALWAYS">
+                                       <children>
+                                          <Label styleClass="section-title" text="Tourist Nationality Distribution">
+                                             <font>
+                                                <Font name="System Bold" size="14.0" />
+                                             </font>
+                                          </Label>
+                                          <PieChart fx:id="nationalityPieChart" prefHeight="300.0" />
+                                       </children>
+                                    </VBox>
+                                    <VBox spacing="10.0" HBox.hgrow="ALWAYS">
+                                       <children>
+                                          <Label styleClass="section-title" text="Monthly Revenue Trends">
+                                             <font>
+                                                <Font name="System Bold" size="14.0" />
+                                             </font>
+                                          </Label>
+                                          <LineChart fx:id="revenueChart" prefHeight="300.0">
+                                             <xAxis>
+                                                <CategoryAxis />
+                                             </xAxis>
+                                             <yAxis>
+                                                <NumberAxis />
+                                             </yAxis>
+                                          </LineChart>
+                                       </children>
+                                    </VBox>
+                                 </children>
+                              </HBox>
+                              <VBox spacing="10.0">
+                                 <children>
+                                    <Label styleClass="section-title" text="Most Popular Attractions">
+                                       <font>
+                                          <Font name="System Bold" size="14.0" />
+                                       </font>
+                                    </Label>
+                                    <BarChart fx:id="popularAttractionsChart" prefHeight="250.0">
+                                       <xAxis>
+                                          <CategoryAxis />
+                                       </xAxis>
+                                       <yAxis>
+                                          <NumberAxis />
+                                       </yAxis>
+                                    </BarChart>
+                                 </children>
+                              </VBox>
+                           </children>
+                           <padding>
+                              <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                           </padding>
+                        </VBox>
+                     </content>
+                  </ScrollPane>
+               </content>
+            </Tab>
+            <Tab text="Detailed Reports">
+               <content>
+                  <ScrollPane fitToWidth="true">
+                     <content>
+                        <VBox spacing="20.0">
+                           <children>
+                              <VBox spacing="10.0">
+                                 <children>
+                                    <HBox alignment="CENTER_LEFT" spacing="10.0">
+                                       <children>
+                                          <Label styleClass="section-title" text="Tourist Nationality Breakdown">
+                                             <font>
+                                                <Font name="System Bold" size="14.0" />
+                                             </font>
+                                          </Label>
+                                          <Region HBox.hgrow="ALWAYS" />
+                                          <Button fx:id="exportNationalityReportBtn" onAction="#exportNationalityReport" styleClass="success-button" text="Export CSV" />
+                                       </children>
+                                    </HBox>
+                                    <TableView fx:id="nationalityTable" prefHeight="200.0">
+                                       <columns>
+                                          <TableColumn fx:id="nationalityColumn" prefWidth="200.0" text="Nationality" />
+                                          <TableColumn fx:id="countColumn" prefWidth="150.0" text="Tourist Count" />
+                                       </columns>
+                                    </TableView>
+                                 </children>
+                              </VBox>
+                              <VBox spacing="10.0">
+                                 <children>
+                                    <HBox alignment="CENTER_LEFT" spacing="10.0">
+                                       <children>
+                                          <Label styleClass="section-title" text="Popular Attractions Ranking">
+                                             <font>
+                                                <Font name="System Bold" size="14.0" />
+                                             </font>
+                                          </Label>
+                                          <Region HBox.hgrow="ALWAYS" />
+                                          <Button fx:id="exportPopularAttractionsBtn" onAction="#exportPopularAttractions" styleClass="success-button" text="Export CSV" />
+                                       </children>
+                                    </HBox>
+                                    <TableView fx:id="popularAttractionsTable" prefHeight="200.0">
+                                       <columns>
+                                          <TableColumn fx:id="attractionNameColumn" prefWidth="300.0" text="Attraction" />
+                                          <TableColumn fx:id="bookingCountColumn" prefWidth="150.0" text="Bookings" />
+                                       </columns>
+                                    </TableView>
+                                 </children>
+                              </VBox>
+                           </children>
+                           <padding>
+                              <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                           </padding>
+                        </VBox>
+                     </content>
+                  </ScrollPane>
+               </content>
+            </Tab>
+            <Tab text="Data Export">
+               <content>
+                  <ScrollPane fitToWidth="true">
+                     <content>
+                        <VBox spacing="20.0">
+                           <children>
+                              <Label styleClass="section-title" text="Export Data to CSV">
+                                 <font>
+                                    <Font name="System Bold" size="16.0" />
+                                 </font>
+                              </Label>
+                              <GridPane hgap="20.0" vgap="15.0">
+                                 <columnConstraints>
+                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                 </columnConstraints>
+                                 <rowConstraints>
+                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                 </rowConstraints>
+                                 <children>
+                                    <VBox alignment="CENTER" spacing="10.0" styleClass="export-card">
+                                       <children>
+                                          <Label text="Tourist Data">
+                                             <font>
+                                                <Font name="System Bold" size="14.0" />
+                                             </font>
+                                          </Label>
+                                          <Label text="Export all tourist records with contact details" />
+                                          <Button fx:id="exportTouristsBtn" maxWidth="Infinity" onAction="#exportTourists" styleClass="primary-button" text="Export Tourists CSV" />
+                                       </children>
+                                       <padding>
+                                          <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+                                       </padding>
+                                    </VBox>
+                                    <VBox alignment="CENTER" spacing="10.0" styleClass="export-card" GridPane.columnIndex="1">
+                                       <children>
+                                          <Label text="Guide Data">
+                                             <font>
+                                                <Font name="System Bold" size="14.0" />
+                                             </font>
+                                          </Label>
+                                          <Label text="Export all guide profiles and specializations" />
+                                          <Button fx:id="exportGuidesBtn" maxWidth="Infinity" onAction="#exportGuides" styleClass="primary-button" text="Export Guides CSV" />
+                                       </children>
+                                       <padding>
+                                          <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+                                       </padding>
+                                    </VBox>
+                                    <VBox alignment="CENTER" spacing="10.0" styleClass="export-card" GridPane.rowIndex="1">
+                                       <children>
+                                          <Label text="Attraction Data">
+                                             <font>
+                                                <Font name="System Bold" size="14.0" />
+                                             </font>
+                                          </Label>
+                                          <Label text="Export attraction catalog with pricing" />
+                                          <Button fx:id="exportAttractionsBtn" maxWidth="Infinity" onAction="#exportAttractions" styleClass="primary-button" text="Export Attractions CSV" />
+                                       </children>
+                                       <padding>
+                                          <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+                                       </padding>
+                                    </VBox>
+                                    <VBox alignment="CENTER" spacing="10.0" styleClass="export-card" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                       <children>
+                                          <Label text="Booking Data">
+                                             <font>
+                                                <Font name="System Bold" size="14.0" />
+                                             </font>
+                                          </Label>
+                                          <Label text="Export complete booking records" />
+                                          <Button fx:id="exportBookingsBtn" maxWidth="Infinity" onAction="#exportBookings" styleClass="primary-button" text="Export Bookings CSV" />
+                                       </children>
+                                       <padding>
+                                          <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+                                       </padding>
+                                    </VBox>
+                                    <VBox alignment="CENTER" spacing="10.0" styleClass="export-card" GridPane.rowIndex="2">
+                                       <children>
+                                          <Label text="Revenue Report">
+                                             <font>
+                                                <Font name="System Bold" size="14.0" />
+                                             </font>
+                                          </Label>
+                                          <Label text="Monthly revenue analysis and trends" />
+                                          <Button fx:id="exportRevenueReportBtn" maxWidth="Infinity" onAction="#exportRevenueReport" styleClass="success-button" text="Export Revenue CSV" />
+                                       </children>
+                                       <padding>
+                                          <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+                                       </padding>
+                                    </VBox>
+                                    <VBox alignment="CENTER" spacing="10.0" styleClass="export-card" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                                       <children>
+                                          <Label text="Festival Impact">
+                                             <font>
+                                                <Font name="System Bold" size="14.0" />
+                                             </font>
+                                          </Label>
+                                          <Label text="Festival discount impact analysis" />
+                                          <Button fx:id="exportFestivalImpactBtn" maxWidth="Infinity" onAction="#exportFestivalImpact" styleClass="warning-button" text="Export Festival CSV" />
+                                       </children>
+                                       <padding>
+                                          <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+                                       </padding>
+                                    </VBox>
+                                 </children>
+                              </GridPane>
+                              <Separator />
+                              <VBox spacing="10.0">
+                                 <children>
+                                    <Label text="CSV Export Information">
+                                       <font>
+                                          <Font name="System Bold" size="14.0" />
+                                       </font>
+                                    </Label>
+                                    <Label text="• All CSV files are UTF-8 encoded and compatible with Excel, Google Sheets, and other spreadsheet applications" wrapText="true" />
+                                    <Label text="• Data includes proper escaping for special characters and commas" wrapText="true" />
+                                    <Label text="• Reports include calculated fields like totals, percentages, and trends" wrapText="true" />
+                                    <Label text="• Files can be used for external analysis, backup, or integration with other systems" wrapText="true" />
+                                 </children>
+                              </VBox>
+                           </children>
+                           <padding>
+                              <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                           </padding>
+                        </VBox>
+                     </content>
+                  </ScrollPane>
+               </content>
+            </Tab>
+         </tabs>
+      </TabPane>
+   </center>
+</BorderPane>
